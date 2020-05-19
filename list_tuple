@@ -1,0 +1,96 @@
+mysql> CREATE DATABASE Book_Store;
+Query OK, 1 row affected (0.00 sec)
+
+mysql> USE Book_Store;
+Database changed
+
+mysql> CREATE TABLE Books_Detail(Book_name varchar(255), Publish_Year int(100),Price int(100));
+Query OK, 0 rows affected (0.26 sec)
+
+mysql> INSERT INTO Books_Detail
+    -> VALUES('CBOT',2014,1200);
+Query OK, 1 row affected (0.07 sec)
+
+mysql> SELECT * FROM Books_Detail
+    -> ;
++-----------+--------------+-------+
+| Book_name | Publish_Year | Price |
++-----------+--------------+-------+
+| CBOT      |         2014 |  1200 |
++-----------+--------------+-------+
+1 row in set (0.00 sec)
+
+mysql> INSERT INTO Books_Detail VALUES('.NET',2009,1100);
+Query OK, 1 row affected (0.06 sec)
+
+mysql> INSERT INTO Books_Detail VALUES('MOBILE COMPUTER',2011,2100),('NEWS LETTER',2006,900),('CN',2010,500);
+Query OK, 3 rows affected (0.05 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> SELECT * FROM Books_Detail
+    -> ;
++-----------------+--------------+-------+             */ CREATED LIST WITH FIVE ENTRIES */
+| Book_name       | Publish_Year | Price |                
++-----------------+--------------+-------+
+| CBOT            |         2014 |  1200 |
+| .NET            |         2009 |  1100 |
+| MOBILE COMPUTER |         2011 |  2100 |
+| NEWS LETTER     |         2006 |   900 |
+| CN              |         2010 |   500 |
++-----------------+--------------+-------+
+5 rows in set (0.00 sec)
+
+mysql> SELECT * FROM Books_Detail ORDER BY Price AND Book_name;
++-----------------+--------------+-------+                            */ SORTED BY BOOKS NAME AND PRICE */
+| Book_name       | Publish_Year | Price |
++-----------------+--------------+-------+
+| CBOT            |         2014 |  1200 |
+| .NET            |         2009 |  1100 |
+| MOBILE COMPUTER |         2011 |  2100 |
+| NEWS LETTER     |         2006 |   900 |
+| CN              |         2010 |   500 |
++-----------------+--------------+-------+
+5 rows in set, 4 warnings (0.00 sec)
+
+mysql> SELECT * FROM Books_Detail ORDER BY Price ;
++-----------------+--------------+-------+
+| Book_name       | Publish_Year | Price |			*/ SORTED BY PRICE */
++-----------------+--------------+-------+
+| CN              |         2010 |   500 |
+| NEWS LETTER     |         2006 |   900 |
+| .NET            |         2009 |  1100 |
+| CBOT            |         2014 |  1200 |
+| MOBILE COMPUTER |         2011 |  2100 |
++-----------------+--------------+-------+
+5 rows in set (0.00 sec)
+
+mysql> SELECT * FROM Books_Detail ORDER BY Book_name;
++-----------------+--------------+-------+
+| Book_name       | Publish_Year | Price |			*/ SORTED BY BOOKS NAME */
++-----------------+--------------+-------+
+| .NET            |         2009 |  1100 |
+| CBOT            |         2014 |  1200 |
+| CN              |         2010 |   500 |
+| MOBILE COMPUTER |         2011 |  2100 |
+| NEWS LETTER     |         2006 |   900 |
++-----------------+--------------+-------+
+5 rows in set (0.00 sec)
+
+mysql> ALTER TABLE Books_Detail MODIFY Book_name varchar(255) AFTER Price;
+Query OK, 0 rows affected (0.62 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> SELECT * FROM Books_Detail;
++--------------+-------+-----------------+
+| Publish_Year | Price | Book_name       |				*/ RESHUFFLE COLUMNS */
++--------------+-------+-----------------+
+|         2014 |  1200 | CBOT            |
+|         2009 |  1100 | .NET            |
+|         2011 |  2100 | MOBILE COMPUTER |
+|         2006 |   900 | NEWS LETTER     |
+|         2010 |   500 | CN              |
++--------------+-------+-----------------+
+5 rows in set (0.00 sec)
+
+mysql> 
+
